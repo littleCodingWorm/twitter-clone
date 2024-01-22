@@ -7,12 +7,15 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { UserButton, auth } from "@clerk/nextjs";
 
 const page = () => {
+  const { userId } = auth();
+  console.log(userId);
   return (
     <>
       <div className="flex items-center justify-between sm:ml-10">
-        <div>user</div>
+        <UserButton afterSignOutUrl="/" />
         <div className="">
           <Image
             className="bg-white"
