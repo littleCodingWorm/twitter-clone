@@ -4,14 +4,14 @@ import {
   MailIcon,
   SearchIcon,
   SettingsIcon,
-} from 'lucide-react';
-import Image from 'next/image';
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const page = () => {
   return (
-    <main className="pt-2 px-3 h-full relative flex flex-col justify-between ">
-      {/* top stuff */}
-      <div className="flex justify-between sm:ml-10 items-center">
+    <>
+      <div className="flex items-center justify-between sm:ml-10">
         <div>user</div>
         <div className="">
           <Image
@@ -26,18 +26,21 @@ const page = () => {
           <SettingsIcon />
         </div>
       </div>
-      <div className="h-full relative p-2">
-        <button className="rounded-full absolute w-10 bottom-5 right-2 flex h-10 justify-center items-center bg-sky-500">
+      <div className="relative h-full p-2">
+        <Link
+          href="/compose/tweet"
+          className="absolute bottom-16 right-2 flex h-10 w-10 items-center justify-center rounded-full bg-sky-500 sm:right-6 sm:h-16 sm:w-16"
+        >
           T
-        </button>
+        </Link>
       </div>
-      <div className="flex absolute sm:left-0 sm:pt-4 sm:flex-col sm:top-0 sm:items-start sm:justify-start gap-6 w-full bottom-0 justify-around sm:w-auto sm:border-t-0 sm:border-r border-t items-center p-2">
+      <div className="absolute bottom-0 flex w-full items-center justify-around gap-6 border-t p-2 sm:left-0 sm:top-0 sm:w-auto sm:flex-col sm:items-start sm:justify-start sm:border-r sm:border-t-0 sm:pt-4">
         <HomeIcon className="sm:h-6 sm:w-6" />
         <SearchIcon className="sm:h-6 sm:w-6" />
         <BellIcon className="sm:h-6 sm:w-6" />
         <MailIcon className="sm:h-6 sm:w-6" />
       </div>
-    </main>
+    </>
   );
 };
 
