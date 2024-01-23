@@ -7,11 +7,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { UserButton, auth } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
+import { db } from "@/lib/db";
+import { PrismaPost } from "@/types";
 
-const page = () => {
-  const { userId } = auth();
-  console.log(userId);
+const Homepage = async () => {
+  const posts = await db.post.findMany();
   return (
     <>
       <div className="flex items-center justify-between sm:ml-10">
@@ -28,6 +29,15 @@ const page = () => {
         <div>
           <SettingsIcon />
         </div>
+      </div>
+      <div className="my-4">
+        {posts.map((post: PrismaPost) => (
+          <div key={post.id} className="border-b">
+            <div className="font-bold">{post.author}</div>
+            {/* <div>{post.title}</div> */}
+            <div>{post.body}</div>
+          </div>
+        ))}
       </div>
       <div className="relative h-full p-2">
         <Link
@@ -47,4 +57,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Homepage;

@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-// import { revalidatePath } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export const createPost = async ({
   author,
@@ -23,6 +23,6 @@ export const createPost = async ({
     },
   });
 
-  // revalidatePath("/home");
+  revalidatePath("/home");
   return createdPost;
 };
